@@ -50,6 +50,8 @@ main {
 .attivo {
     background-color:  #6495ed ;
     color: white ;
+}
 
-
+.nascosto {
+    display: none;
 }

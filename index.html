@@ -13,11 +13,22 @@
     <div class="wrapper">
 
         <header>
-            <h1>Campo Minato </h1>
+            <h1>Campo Minato</h1>
+            <label for="livello">Seleziona difficoltà</label>
+            <select name="livello" id="livello" class="livello">
+                <option value="1">Facile</option>
+                <option value="2">Difficile</option>
+                <option value="3">Estremo</option>
+            </select>
+            <div>
+                <button id="play">Play</button>
+            </div>
         </header>
+        
 
         <main>
-            <div class="contenitore-griglia">
+            <h2 id="invito-gioco">seleziona e gioca</h2>
+            <div class="contenitore-griglia nascosto">
                 <!--            <div class="box-griglia">
                     <span>1</span>
                 </div>-->
