@@ -30,7 +30,7 @@ function inizioGioco() {
     const numeroBombe = 16;
     const arrayBombe = generatoreNumeriUnici(numeroBombe, numeroCelle);
     const celleGiuste = [];
-    const condizioneVittoria = numeroCelle - numeroBombe ;
+    const condizioneVittoria = numeroCelle - numeroBombe;
 
 
     for (let i = 1; i <= numeroCelle; i++) {
@@ -39,6 +39,32 @@ function inizioGioco() {
         contenitore.append(nuovoOggetto);
     }
 
+    function gestioneClick() {
+        const numeroScelto = parseInt(this.querySelector("span").textContent);
+        if (arrayBombe.includes(numeroScelto)) {
+            this.classList.add("rosso");
+            fineGioco(celleGiuste.length, "perso");
+        } else {
+            this.classList.add("attivo");
+            this.style.pointerEvents = "none";
+            celleGiuste.push(numeroScelto);
+            if (celleGiuste.length >= condizioneVittoria) {
+                fineGioco(celleGiuste.length, "vinto")
+            }
+
+        }
+    }
+    function fineGioco(numeriGiusti, vintoPerso) {
+        const stampaRisultato = document.getElementById("risultato");
+        let messaggio;
+        if (vintoPerso === "perso") {
+            messaggio = `Hai perso! Hai indovinato ${numeriGiusti} numeri`
+        } else {
+            messaggio = "Hai vinto!"
+        }
+        stampaRisultato.innerHTML = messaggio;
+        stampaRisultato.classList.remove("nascosto");
+    }
 }
 
 //FUNZIONI
@@ -53,33 +79,7 @@ function generatoreBox(numeroInterno, cellePerRiga) {
 
 }
 
-function gestioneClick() {
-    const numeroScelto = parseInt(this.querySelector("span").textContent);
-    if (arrayBombe.includes(numeroScelto)) {
-        this.classList.add("rosso");
-        fineGioco(celleGiuste.length, "perso") ;
-    } else {
-        this.classList.add("attivo");
-        this.style.pointerEvents = "none";
-        celleGiuste.push(numeroScelto);
-        if (celleGiuste.length >= condizioneVittoria) {
-            fineGioco(celleGiuste.length, "vinto")
-        }
 
-    }
-
-function fineGioco(numeriGiusti, vintoPerso) {
-    document.getElementById("risultato") ;
-    let messaggio ; 
-    if (vintoPerso === "perso") {
-        messaggio = `Hai perso! Hai indovinato ${numeriGiusti} numeri`
-} else {
-    messaggio = "Hai vinto!"
-    document.getElementById("risultato").innerHTML = messaggio ;
-}
-
-}
-}
 
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
