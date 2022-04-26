@@ -38,8 +38,6 @@ main {
 }
 
 .box-griglia {
-    width: calc(100% / 10 ) ;
-    height: calc(100% / 10 ) ;
     border: 1px solid black ;
     display: flex ;
     justify-content: center ;
@@ -50,6 +48,9 @@ main {
 .attivo {
     background-color:  #6495ed ;
     color: white ;
+}
+.rosso {
+    background-color: red ;
 }
 
 .nascosto {
